@@ -4,6 +4,10 @@
   --primary-color: #0056b3;
   --card-bg: #ffffff;
   --border-color: #cccccc;
+  --status-bg: #e9ecef;
+  --ficap-text: #4a4a4a;
+  --input-bg: #ffffff;
+  --input-text: #1a1a1a;
 }
 
 * {
@@ -18,6 +22,18 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   padding: 1rem;
+}
+
+body.dark-theme {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --primary-color: #4da3ff;
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+  --status-bg: #2b3035;
+  --ficap-text: #a0a0a0;
+  --input-bg: #2b3035;
+  --input-text: #e0e0e0;
 }
 
 a:focus,
@@ -99,12 +115,12 @@ img {
 
 figcaption {
   font-size: 0.875rem;
-  color: #4a4a4a;
+  color: var(--ficap-text);
   margin-top: 0.5rem;
 }
 
 aside {
-  background-color: #e9ecef;
+  background-color: var(--status-bg);
   padding: 0.75rem;
   border-left: 4px solid var(--primary-color);
   margin: 1rem 0;
@@ -124,7 +140,7 @@ table.skills td {
 }
 
 table.skills th {
-  background-color: #e9ecef;
+  background-color: var(--status-bg);
 }
 
 form {
@@ -150,6 +166,11 @@ input, textarea, button {
   font-size: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 4px;
+}
+
+input, textarea {
+  background-color: var(--input-bg);
+  color: var(--text-color);
 }
 
 button {
