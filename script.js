@@ -1,14 +1,8 @@
 const themeToggle = document.getElementById('themeToggle');
+const searchInput = document.getElementById("searchInput");
+const container = document.getElementById("collectionContainer");
+const noResultsMsg = document.getElementById("noResultsMessage");
 
-themeToggle.addEventListener('click', () => {
-  // 1. Toggle the class on the body (returns true if class was added, false if removed)
-  const isDark = document.body.classList.toggle('dark-theme');
-
-  // 2. Sync the ARIA attribute with the toggle state
-  themeToggle.setAttribute('aria-pressed', isDark);
-});
-
-// 1. Array of at least 6 objects (3+ fields each, including category)
 const itemsData = [
   { title: "C++ Platformer Game Engine", category: "Project", description: "Developed a 2D platformer game engine entirely from scratch using C++, focusing on custom physics rendering." },
   { title: "Inventory Management Web App", category: "Work", description: "Worked as a fullstack developer at a lab company, designing and deploying an inventory tracking system." },
@@ -18,42 +12,58 @@ const itemsData = [
   { title: "Mr. Robot", category: "TV", description: "My Favorite TV Show! it's about a cybersecurity expert with drug addiction, really crazy, but super interesting!" }
 ];
 
-// 2. Render function using standard DOM creation methods
+themeToggle.addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('dark-theme');
+
+  themeToggle.setAttribute('aria-pressed', isDark);
+});
+
 function renderCollection(items) {
-  const container = document.getElementById("collectionContainer");
-  
-  // Clear any existing content
   container.textContent = "";
 
+  if (items.length === 0) {
+    noResultsMsg.classList.remove("hidden");
+    return;
+  } else {
+    noResultsMsg.classList.add("hidden");
+  }
+
   items.forEach(item => {
-    // Create card container
     const card = document.createElement("article");
     card.classList.add("card");
 
-    // Create Category Element
     const category = document.createElement("span");
     category.classList.add("card-category");
     category.textContent = item.category;
 
-    // Create Title Element
     const title = document.createElement("h3");
     title.classList.add("card-title");
     title.textContent = item.title;
 
-    // Create Description Element
     const description = document.createElement("p");
     description.classList.add("card-description");
     description.textContent = item.description;
 
-    // Append child nodes to card
     card.appendChild(category);
     card.appendChild(title);
     card.appendChild(description);
-
-    // Append card to main grid container
     container.appendChild(card);
   });
 }
 
-// 3. Initialize rendering on script load
+function handleSearch() {
+  const query = searchInput.value.trim().toLowerCase();
+
+  const filteredItems = itemsData.filter(item => {
+    const matchesName = item.title.toLowerCase().includes(query);
+    const matchesCategory = item.category.toLowerCase().includes(query);
+
+    return matchesName || matchesCategory;
+  });
+
+  renderCollection(filteredItems);
+}
+
+searchInput.addEventListener("input", handleSearch);
+
 renderCollection(itemsData);

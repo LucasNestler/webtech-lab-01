@@ -60,21 +60,22 @@
         <tr><td>Spanish</td><td>Native</td></tr>
       </table>
     </section>
+    
+    <section class="collection-section">
+      <h2>Collection</h2>
 
-    <section id="projects">
-      <h2>Projects &amp; Work Experience</h2>
-      
-      <article>
-        <h3>C++ Platformer Game Engine</h3>
-        <p><time datetime="2025">2025</time></p>
-        <p>Developed a 2D platformer game engine entirely from scratch using C++, focusing on custom physics rendering.</p>
-      </article>
+      <div class="search-container">
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search by name or category..." 
+          aria-label="Search by name or category"
+        >
 
-      <article>
-        <h3>Inventory Management Web App</h3>
-        <p><time datetime="2025">2025</time></p>
-        <p>Worked as a fullstack developer at a lab company, designing and deploying an inventory tracking system.</p>
-      </article>
+        <div id="collectionContainer" class="collection-grid"></div>
+
+        <p id="noResultsMessage" class="no-results hidden" aria-live="polite">No items found.</p>
+      </div>
     </section>
 
     <section id="contact">
@@ -102,11 +103,6 @@
 
         <button type="submit">Send</button>
       </form>
-    </section>
-    
-    <section class="collection-section">
-      <h2>Collection</h2>
-      <div id="collectionContainer" class="collection-grid"></div>
     </section>
   </main>
 
