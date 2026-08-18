@@ -195,3 +195,36 @@ footer {
 footer a {
   color: var(--primary-color);
 }
+
+
+/* Collection Section Styles */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.card-category {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.card-title {
+  margin: 0.5rem 0;
+  color: var(--text-color);
+}
+
+.card-description {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
