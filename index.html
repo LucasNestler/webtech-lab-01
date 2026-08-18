@@ -64,18 +64,45 @@
     <section class="collection-section">
       <h2>Collection</h2>
 
-      <div class="search-container">
+      <div class="search-bar-wrapper">
         <input 
           type="text" 
           id="searchInput" 
           placeholder="Search by name or category..." 
           aria-label="Search by name or category"
         >
-
-        <div id="collectionContainer" class="collection-grid"></div>
-
-        <p id="noResultsMessage" class="no-results hidden" aria-live="polite">No items found.</p>
+        <button type="button" id="toggleFormBtn" class="primary-btn" aria-expanded="false">
+          + Add Item
+        </button>
       </div>
+
+      <div id="formContainer" class="form-container hidden">
+        <h3>Create New Item</h3>
+        <form id="addItemForm" class="add-item-form">
+          <div class="form-group">
+            <label for="itemTitle">Title</label>
+            <input type="text" id="itemTitle" required placeholder="Item name...">
+          </div>
+        
+          <div class="form-group">
+            <label for="itemCategory">Category</label>
+            <input type="text" id="itemCategory" required placeholder="TV, Project, Work, etc.">
+          </div>
+        
+          <div class="form-group">
+            <label for="itemDescription">Description</label>
+            <textarea id="itemDescription" required rows="3" placeholder="Brief description..."></textarea>
+          </div>
+        
+          <div class="form-actions">
+            <button type="submit" class="submit-btn">Save Item</button>
+            <button type="button" id="cancelFormBtn" class="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="collectionContainer" class="collection-grid"></div>
+      <p id="noResultsMessage" class="no-results hidden" aria-live="polite">No items found.</p>
     </section>
 
     <section id="contact">
@@ -85,23 +112,30 @@
         <p>Located in Santiago, Chile</p>
       </address>
 
-      <form action="#" method="get">
-        <div>
+      <div id="contactSuccess" class="success-message hidden" role="alert" aria-live="polite">
+        <p>Thank you! Your message has been sent successfully.</p>
+      </div>
+
+      <form id="contactForm" action="#" method="get" novalidate>
+        <div class="form-group">
           <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required autocomplete="name">
+          <input type="text" id="name" name="name" required>
+          <small id="nameError" class="error-text hidden" aria-live="polite"></small>
         </div>
 
-        <div>
+        <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required autocomplete="email">
+          <input type="email" id="email" name="email" required>
+          <small id="emailError" class="error-text hidden" aria-live="polite"></small>
         </div>
 
-        <div>
+        <div class="form-group">
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
+          <small id="messageError" class="error-text hidden" aria-live="polite"></small>
         </div>
 
-        <button type="submit">Send</button>
+        <button type="submit" class="submit-btn">Send</button>
       </form>
     </section>
   </main>
